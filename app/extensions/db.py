@@ -16,7 +16,25 @@ app = Flask(
     static_url_path="/",
 )
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+mysqlconnector://root:root@localhost/flaskDB"
+# name = os.environ.get('MYSQL_HOST','localhost')
+
+db_host = os.environ.get('MYSQL_HOST','localhost')
+db_port = os.environ.get('MYSQL_PORT',3306)
+db_user = os.environ.get('MYSQL_USER','root')
+db_password = os.environ.get('MYSQL_PASSWORD','root')
+db_name = os.environ.get('MYSQL_DB','flaskDB')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+print(
+    '============================================================='
+)
+print(app.config['SQLALCHEMY_DATABASE_URI'])
+print(
+    '============================================================='
+)
+print(
+    '============================================================='
+)
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_TYPE'] = "filesystem"
 

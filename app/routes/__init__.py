@@ -122,7 +122,7 @@ def register_user():
     form = RegistrationForm()
     if form.validate_on_submit():
         filename=None
-        print(form.profile_photo.data)
+        # print(form.profile_photo.data)
             # file = form.profile_photo.data
             # filename = secure_filename(file.filename)
             # file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
